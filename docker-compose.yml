@@ -1,0 +1,28 @@
+version: '3.8'                       # this line specifies the version of the Docker Compose file format which is being used
+services:                                # this line begins the section defining Docker services
+  app:                                   # this line defines the first service named 'app'.
+    build: .                              # this line specifies to build the docker image using the dockerfile in the current directory.
+    image: rk1597/node-web-app:1.1.2       # this line specifies the image to use for the container
+    ports:                                  # this line Defines port mappings between host and container
+      - '3043:3040'                        # this line maps host port 3043 to container port 3040.
+    environment:                           # this line sets environment variables inside the container.
+      - PORT=3043                          # Sets the environment variable PORT inside the container to 3043
+    container_name: my-app4                # Sets the name of the container to 'my-app4'
+    networks:                                  # this line specifies the networks the container should be connected to
+      - my-net                                  # Connects the container to the 'my-net' network
+
+  app1:                                         # this line defines the first service named 'app1'.
+    build: .                                      # Same as above, builds the Docker image from the current directory
+    image: rk1597/node-web-app:1.1.2         # this line specifies the image to use for the container
+    ports:                                       # this line Defines port mappings between host and container
+      - '3044:3040'                               # this line maps host port 3044 to container port 3040.
+    environment:                                   # this line sets environment variables inside the container.
+      - PORT=3044                                   # Sets the environment variable PORT inside the container to 3044
+    container_name: my-app3                        # Sets the name of the container to 'my-app3'
+    networks:                                       # this line specifies the networks the container should be connected to
+      - my-net                                      # Connects the container to the 'my-net' network
+
+
+networks:                                           # it defines the networks section for configuring Docker networks
+  my-net:                                               # it defines the network named 'my-net'
+    driver: bridge                                     # it specifies the network driver to use in this case the bridge driver

@@ -1,0 +1,23 @@
+apiVersion: apps/v1                                  # Specifies the API version for the ReplicaSet, using the 'apps/v1' API group
+kind: ReplicaSet                                      # Defines the type of Kubernetes object being created, which is a ReplicaSet
+metadata:                                                 # Metadata section for the ReplicaSet
+  name: myreplicaset                                          # Name of the ReplicaSet is set to 'myreplicaset'
+  labels:                                                   # Labels associated with the ReplicaSet for identification and grouping
+    app: myapp                                             # Label 'app' is set to 'myapp'
+    tier: frontend                                           # Label 'tier' is set to 'frontend' for this ReplicaSet
+spec:                                                          # Specification for the ReplicaSet, including its replicas and pod template
+  # modify replicas according to your case
+  replicas: 3                                                 # Specifies that the ReplicaSet should maintain 3 replicas of the pod
+  selector:                                                  # Defines how the ReplicaSet selects which pods to manage
+    matchLabels:                                                # Specifies the labels that the ReplicaSet should match with to manage pods
+      tier: frontend                                          # ReplicaSet matches pods with the label 'tier: frontend'
+  template:                                                   # Template for creating new pods managed by the ReplicaSet
+    metadata:
+      labels:                                                  # Labels for the pods created from this template
+        tier: frontend                                           # Label 'tier' is set to 'frontend' for pods created from this template
+    spec:                                                          # Specification for the pods created from this template
+      containers:                                                  # List of containers within the pod template
+      - name: mynode                                                  # Name of the container is set to 'mynode'
+        image: rk1597/node-web-app:1.1.1                               # Specifies the Docker image and its version to use for the container 
+        ports:                                                        # Port configuration for the container
+        - containerPort: 3040                                           # Specifies that the container listens on port 3040

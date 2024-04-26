@@ -1,0 +1,15 @@
+apiVersion: v1                            # Specifies the API version for the Service, using the core/v1 API group
+kind: Service                             # Defines the type of Kubernetes object being created, which is a Service
+metadata:                                   # Metadata section for the Service
+  name: example-service                       # Name of the Service is set to 'example-service'
+spec:                                            # Specification for the Service, including its selector, cluster IP, ports, and type
+  selector:                                      # Selector to match pods for the Service
+    tier: frontend                              # Service selects pods with the label 'tier: frontend'
+  clusterIP: 10.99.132.220                        # Cluster IP address assigned to the Service
+  externalTrafficPolicy: Cluster                    # Specifies the external traffic policy for the Service ,Cluster in our case
+  ports:                                           # List of ports exposed by the Service
+  - name: myport                                  # Name of the port is set to 'myport'
+    port: 8037                                       # Port exposed by the Service
+    protocol: TCP                                    # Protocol used by the port is TCP
+    targetPort: 3040                                   # Target port on the pods to forward traffic to port 3040
+  type: LoadBalancer                                     # Type of the Service is LoadBalancer, exposing the Service externally via a load balancer
