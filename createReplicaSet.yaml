@@ -18,6 +18,6 @@ spec:                                                          # Specification f
     spec:                                                          # Specification for the pods created from this template
       containers:                                                  # List of containers within the pod template
       - name: mynode                                                  # Name of the container is set to 'mynode'
-        image: rk1597/node-web-app:1.1.1                               # Specifies the Docker image and its version to use for the container 
+        image: rk1597/node-web-app:1.1.2                               # Specifies the Docker image and its version to use for the container 
         ports:                                                        # Port configuration for the container
         - containerPort: 3040                                           # Specifies that the container listens on port 3040

@@ -6,7 +6,7 @@ metadata:                                # Metadata section for the Pod
     tier: frontend                       # Label 'tier' is set to 'frontend' for this Pod
 spec:                                       # Specification for the Pod, including its containers and configurations
   containers:                                 # List of containers within the Pod
-  - image: rk1597/node-web-app:1.1.1            # Specifies the Docker image and its version to use for the container
+  - image: rk1597/node-web-app:1.1.2            # Specifies the Docker image and its version to use for the container
     imagePullPolicy: Never                      # Specifies that Kubernetes should never pull the image from the registry
     name: nodewebapp                             # Name of the container is set to 'nodewebapp'
     ports:                                      # Port configuration for the container
